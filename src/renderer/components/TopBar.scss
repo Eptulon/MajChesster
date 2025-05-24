@@ -1,0 +1,127 @@
+@import '../styles/variables';
+
+.topbar {
+  height: 60px;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-lg);
+  position: fixed;
+  top: 0;
+  left: 280px; // Sidebar width
+  right: 0;
+  z-index: var(--z-sticky);
+  
+  &__left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  &__center {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  &__right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    
+    &-item {
+      font-family: var(--font-subheading);
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      
+      &--current {
+        color: var(--text-primary);
+        font-weight: var(--font-medium);
+      }
+    }
+    
+    &-separator {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+    }
+  }
+  
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  
+  &__control-btn {
+    min-width: auto;
+    white-space: nowrap;
+  }
+  
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  
+  &__engine-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: rgba(155, 61, 228, 0.1);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-neon-purple);
+  }
+  
+  &__engine-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-neon-cyan);
+    animation: pulse 2s infinite;
+  }
+  
+  &__engine-text {
+    font-size: var(--text-sm);
+    color: var(--color-neon-purple);
+    font-weight: var(--font-medium);
+  }
+}
+
+// Responsive adjustments
+@include respond-to('lg') {
+  .topbar {
+    left: 320px; // Adjusted for larger sidebar
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+// Mobile adjustments (for future implementation)
+@media (max-width: 768px) {
+  .topbar {
+    left: 0;
+    padding: 0 var(--spacing-md);
+    
+    &__breadcrumb {
+      display: none;
+    }
+    
+    &__controls {
+      gap: var(--spacing-xs);
+    }
+    
+    &__control-btn {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: var(--text-sm);
+    }
+  }
+}
